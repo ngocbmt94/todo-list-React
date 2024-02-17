@@ -43,16 +43,6 @@ const tasksSlice = createSlice({
       const item = state.tasks.find((item) => item.id === action.payload);
       item.isCompleted = !item.isCompleted;
     },
-    // filterItem(state, action) {
-    //   state.tasks = state.tasks.sort(function (a, b) {
-    //     const top = a.isCompleted === true ? a.isCompleted : false;
-    //     const bottom = b.isCompleted === true ? b.isCompleted : false;
-
-    //     if (action.payload === "completed") return bottom - top;
-    //     if (action.payload === "unCompleted") return top - bottom;
-    //     return 0;
-    //   });
-    // },
   },
   extraReducers(builders) {
     builders

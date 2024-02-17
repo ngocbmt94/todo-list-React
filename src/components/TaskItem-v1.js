@@ -8,15 +8,13 @@ function TaskItem({ task }) {
   const dispatch = useDispatch();
   const [editTitile, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
-  const tasks = useSelector(getTasks);
 
   const handleDelete = (id) => {
     dispatch(deleteItem(id));
     deleteTask(id);
   };
   const handleEdit = (id) => {
-    const getTaskEdited = tasks.find((el) => el.id === id);
-    const { title, description } = getTaskEdited;
+    const { title, description } = task;
     setEditTitle(title);
     setEditDescription(description);
 

@@ -7,28 +7,22 @@
       "isCompleted": true
     },
     {
-      "title": "test abc xv",
-      "description": "kenh14",
-      "id": 7,
+      "id": 2,
+      "title": "edit something",
+      "description": "abc def gh",
+      "isCompleted": false
+    },
+    {
+      "id": 3,
+      "title": "gau thui",
+      "description": "kha uyen",
       "isCompleted": true
     },
     {
-      "title": "abc def",
-      "description": "To render a controlled input, pass the value prop to it (or checked for checkboxes and radios). React will force the input to always have the value you passed.",
-      "isCompleted": false,
-      "id": 8
-    },
-    {
-      "title": "handle",
-      "description": "abc",
-      "isCompleted": false,
-      "id": 9
-    },
-    {
-      "title": "abcd dcw",
-      "description": "cexxxx x",
-      "isCompleted": true,
-      "id": 10
+      "id": 4,
+      "title": "da",
+      "description": "aa",
+      "isCompleted": false
     }
   ]
 }
