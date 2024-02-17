@@ -3,9 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const initialState = {
   tasks: [],
   isLoading: false,
-  error: "",
   filter: "all",
-  blacklist: ["isLoading", "error"],
 };
 
 const tasksSlice = createSlice({
@@ -14,7 +12,7 @@ const tasksSlice = createSlice({
   reducers: {
     addItem(state, action) {
       action.payload.id = nanoid();
-      state.tasks = [...state.tasks, action.payload];
+      state.tasks = [action.payload, ...state.tasks];
     },
     deleteItem(state, action) {
       state.tasks = state.tasks.filter((item) => item.id !== action.payload);
@@ -48,10 +46,13 @@ const tasksSlice = createSlice({
     setFilter(state, action) {
       state.filter = action.payload;
     },
+    setIsLoading(state, action) {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { addItem, deleteItem, editItem, chooseItemEdit, checkItem, reOrder, setFilter } = tasksSlice.actions;
+export const { addItem, deleteItem, editItem, chooseItemEdit, checkItem, reOrder, setFilter, setIsLoading } = tasksSlice.actions;
 export default tasksSlice.reducer;
 
 export const getTasks = (state) => {
