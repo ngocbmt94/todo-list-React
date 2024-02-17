@@ -27,6 +27,10 @@ Download or clone this repo and run the following command in the terminal:
 - Drag and Drop
 ```
 
+### View the app (Hosted on Netlify):
+
+https://bichngoc-todo-list-app.netlify.app/
+
 ### Tools:
 
 React.js, Redux-persist, react-redux, React Hook Form, React-icons, React-beautiful-dnd, Tailwind CSS
