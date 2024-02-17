@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import TaskItem from "./TaskItem";
-import { fetchTasks, getTasks } from "./tasksSlice";
+import { fetchTasks, getTasks } from "../redux/tasksSlice";
 import { useEffect } from "react";
 import FilterTask from "./FilterTask";
 

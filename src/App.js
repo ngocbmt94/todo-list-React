@@ -3,7 +3,7 @@ import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
-import { getIsLoading } from "./components/tasksSlice";
+import { getIsLoading } from "./redux/tasksSlice";
 import { useSelector } from "react-redux";
 
 function App() {

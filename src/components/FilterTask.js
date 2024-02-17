@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchFilterTask } from "./tasksSlice";
+import { fetchFilterTask } from "../redux/tasksSlice";
 
 function FilterTask() {
   const [value, setValue] = useState("all");

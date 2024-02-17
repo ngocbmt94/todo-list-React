@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addItem } from "./tasksSlice";
+import { addItem } from "../redux/tasksSlice";
 import { postTask } from "../service/apiTasks";
 import FormTask from "./FormTask";
 

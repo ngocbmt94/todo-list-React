@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteItem, editItem, chooseItemEdit, getTasks, checkItem } from "./tasksSlice";
+import { useDispatch } from "react-redux";
+import { deleteItem, editItem, chooseItemEdit, checkItem } from "../redux/tasksSlice";
 import { deleteTask, patchRequest, puttingRequest } from "../service/apiTasks";
 
 function TaskItem({ task }) {

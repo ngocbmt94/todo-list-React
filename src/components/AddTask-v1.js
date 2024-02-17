@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "./tasksSlice";
+import { addItem } from "../redux/tasksSlice";
 import { postTask } from "../service/apiTasks";
 
 function AddTask() {

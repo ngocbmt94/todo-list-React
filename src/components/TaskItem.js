@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { FiEdit, FiTrash } from "react-icons/fi";
-import { deleteItem, editItem, chooseItemEdit, checkItem } from "./tasksSlice";
+import { deleteItem, editItem, chooseItemEdit, checkItem } from "../redux/tasksSlice";
 import { deleteTask, patchRequest, puttingRequest } from "../service/apiTasks";
 import FormTask from "./FormTask";
 
