@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/tasksSlice";
-import { postTask } from "../service/apiTasks";
 import FormTask from "./FormTask";
 
 function AddTask() {
@@ -8,8 +7,7 @@ function AddTask() {
 
   const onSubmit = async (data) => {
     data.isCompleted = false;
-    const task = await postTask(data);
-    dispatch(addItem(task));
+    dispatch(addItem(data));
   };
 
   return (

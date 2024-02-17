@@ -1,29 +1,25 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchData } from "../service/apiTasks";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
   tasks: [],
   isLoading: false,
   error: "",
+  filter: "all",
+  blacklist: ["isLoading", "error"],
 };
-
-export const fetchTasks = createAsyncThunk("tasks/fetchTasks", fetchData);
-export const fetchFilterTask = createAsyncThunk("tasks/fetchFilterTask", async (value) => fetchData(value));
 
 const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
     addItem(state, action) {
-      // payload = newItem
+      action.payload.id = nanoid();
       state.tasks = [...state.tasks, action.payload];
     },
     deleteItem(state, action) {
-      // payload = id
       state.tasks = state.tasks.filter((item) => item.id !== action.payload);
     },
     chooseItemEdit(state, action) {
-      // payload = id
       state.tasks = state.tasks.map((el) => (el.id !== action.payload ? { ...el, ...{ isEditting: false } } : { ...el, ...{ isEditting: true } }));
     },
     editItem: {
@@ -39,38 +35,30 @@ const tasksSlice = createSlice({
       },
     },
     checkItem(state, action) {
-      // payload = id
       const item = state.tasks.find((item) => item.id === action.payload);
       item.isCompleted = !item.isCompleted;
     },
-  },
-  extraReducers(builders) {
-    builders
-      .addCase(fetchTasks.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchTasks.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.tasks = action.payload;
-      })
-      .addCase(fetchTasks.rejected, (state, action) => {
-        state.error = "There was a problem getting your tasks. Make sure to fill this field!";
-      })
-      .addCase(fetchFilterTask.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchFilterTask.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.tasks = action.payload;
-      })
-      .addCase(fetchFilterTask.rejected, (state, action) => {
-        state.error = "There was a problem getting  your fillter tasks.";
-      });
+    reOrder(state, action) {
+      const { source, destination } = action.payload;
+      const newItems = [...state.tasks];
+      const [removed] = newItems.splice(source, 1);
+      newItems.splice(destination, 0, removed);
+      state.tasks = newItems;
+    },
+    setFilter(state, action) {
+      state.filter = action.payload;
+    },
   },
 });
 
-export const { addItem, deleteItem, editItem, chooseItemEdit, checkItem } = tasksSlice.actions;
+export const { addItem, deleteItem, editItem, chooseItemEdit, checkItem, reOrder, setFilter } = tasksSlice.actions;
 export default tasksSlice.reducer;
 
-export const getTasks = (state) => state.tasks.tasks;
+export const getTasks = (state) => {
+  const filter = state.tasks.filter;
+  if (filter === "completed") return state.tasks.tasks.filter((c) => c.isCompleted);
+  if (filter === "unCompleted") return state.tasks.tasks.filter((c) => !c.isCompleted);
+  return state.tasks.tasks;
+};
 export const getIsLoading = (state) => state.tasks.isLoading;
+export const getFilterValue = (state) => state.tasks.filter;
